@@ -4,34 +4,59 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.*;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.scene.paint.Color;
+import javafx.geometry.Insets;
 
 public class Main extends Application  {
+    Stage window;
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Title of the Window");
+public static void main(String []args){
+     launch(args);
+}
 
-        // Create four buttons
-        Button button1 = new Button("Button 1"); button1.setOnAction(e -> System.out.println("hi, f*ck you <3"));
-        Button button2 = new Button("Button 2");
-        Button button3 = new Button("Button 3");
-        Button button4 = new Button("Button 4");
+@Override
+public void start(Stage primaryStage) throws Exception{
+    window = primaryStage;
+    window.setTitle("thenewboston - Javafx");
+    
 
-        // Create a layout and add the buttons
-        VBox layout = new VBox(10); // VBox with 10px spacing
-        layout.getChildren().addAll(button1, button2, button3, button4);
+    GridPane grid = new GridPane();
+    grid.setPadding(new Insets(10,10,10,10));
+    grid.setVgap(8);
+    grid.setHgap(10);
 
-        
-        Scene scene = new Scene(layout, 300, 250);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+    //Name label
+    Label nameLabel = new Label("Username: ");
+    GridPane.setConstraints(nameLabel, 0 , 0 );
+
+    //input label
+    TextField nameInput= new TextField();
+    nameInput.setPromptText("hi");
+    GridPane.setConstraints(nameInput, 1, 0);
+
+    //password
+    Label passwordLabel = new Label("Password: ");
+    GridPane.setConstraints(passwordLabel, 0 , 1 );
+
+    //input label
+    TextField passwordInput= new TextField();
+    passwordInput.setPromptText("hi");
+    GridPane.setConstraints(passwordInput, 1, 1);
+
+    Button loginButton = new Button("Log in");
+    GridPane.setConstraints(loginButton, 1, 2);
+
+
+    grid.getChildren().addAll(nameLabel, nameInput, passwordLabel, passwordInput, loginButton);
+    Scene scene = new Scene(grid, 300, 200);
+    window.setScene(scene);
+    window.show();
     }
 }
