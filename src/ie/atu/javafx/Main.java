@@ -56,6 +56,7 @@ public void start(Stage primaryStage) throws Exception{
 
     grid.getChildren().addAll(nameLabel, nameInput, passwordLabel, passwordInput, loginButton);
     Scene scene = new Scene(grid, 300, 200);
+    scene.getStylesheets().add("/oohpretty.css");
     window.setScene(scene);
     window.show();
     }
